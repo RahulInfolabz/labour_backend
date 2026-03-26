@@ -1,0 +1,270 @@
+{
+  "info": {
+    "name": "Local Labour Search and Workforce Discovery System",
+    "description": "Complete API collection for Local Labour Search and Workforce Discovery System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "🔐 Common",
+      "item": [
+        {
+          "name": "Signup",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/signup",
+              "host": ["{{base_url}}"],
+              "path": ["signup"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"full_name\": \"Ravi Desai\",\n  \"email\": \"ravi@gmail.com\",\n  \"password\": \"Ravi@123\",\n  \"mobile_no\": \"9900000002\",\n  \"address\": \"22, Shyamal Cross Road, Ahmedabad\",\n  \"city\": \"Ahmedabad\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/login",
+              "host": ["{{base_url}}"],
+              "path": ["login"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"ravi@gmail.com\",\n  \"password\": \"Ravi@123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/logout",
+              "host": ["{{base_url}}"],
+              "path": ["logout"]
+            }
+          }
+        },
+        {
+          "name": "Session",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/session",
+              "host": ["{{base_url}}"],
+              "path": ["session"]
+            }
+          }
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/changePassword",
+              "host": ["{{base_url}}"],
+              "path": ["changePassword"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"ravi@gmail.com\",\n  \"newPassword\": \"NewPass@123\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🌐 Public",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/categories",
+              "host": ["{{base_url}}"],
+              "path": ["categories"]
+            }
+          }
+        },
+        {
+          "name": "Get All Labours",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/labours",
+              "host": ["{{base_url}}"],
+              "path": ["labours"]
+            }
+          }
+        },
+        {
+          "name": "Get Labours — Filter by Category",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/labours?category_id=CATEGORY_ID_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["labours"],
+              "query": [{ "key": "category_id", "value": "CATEGORY_ID_HERE" }]
+            }
+          }
+        },
+        {
+          "name": "Get Labours — Filter by Charges Range",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/labours?min_charges=400&max_charges=700",
+              "host": ["{{base_url}}"],
+              "path": ["labours"],
+              "query": [
+                { "key": "min_charges", "value": "400" },
+                { "key": "max_charges", "value": "700" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Labours — Filter by Availability",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/labours?availability_status=Available",
+              "host": ["{{base_url}}"],
+              "path": ["labours"],
+              "query": [{ "key": "availability_status", "value": "Available" }]
+            }
+          }
+        },
+        {
+          "name": "Get Labour Details",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/labours/LABOUR_ID_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["labours", "LABOUR_ID_HERE"]
+            }
+          }
+        },
+        {
+          "name": "Get All Feedbacks",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/feedbacks",
+              "host": ["{{base_url}}"],
+              "path": ["feedbacks"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🟢 User (Session Required)",
+      "item": [
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/user/updateProfile",
+              "host": ["{{base_url}}"],
+              "path": ["user", "updateProfile"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"full_name\": \"Ravi Kumar Desai\",\n  \"mobile_no\": \"9911111111\",\n  \"address\": \"10, New CG Road, Ahmedabad\",\n  \"city\": \"Ahmedabad\",\n  \"profile_image\": \"https://i.pravatar.cc/150?img=10\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Add Labour Inquiry",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/user/addLabourInquiry",
+              "host": ["{{base_url}}"],
+              "path": ["user", "addLabourInquiry"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"labour_id\": \"LABOUR_ID_HERE\",\n  \"inquiry_message\": \"I need complete home wiring done for my new 3BHK flat. Can you visit for inspection this weekend?\"\n}"
+            }
+          }
+        },
+        {
+          "name": "My Labour Inquiries",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/user/myLabourInquiries",
+              "host": ["{{base_url}}"],
+              "path": ["user", "myLabourInquiries"]
+            }
+          }
+        },
+        {
+          "name": "Add General Inquiry",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/user/addGeneralInquiry",
+              "host": ["{{base_url}}"],
+              "path": ["user", "addGeneralInquiry"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inquiry_subject\": \"Complete Home Renovation Team\",\n  \"inquiry_message\": \"Looking for a complete home renovation package including electrician, plumber, carpenter, and painter.\"\n}"
+            }
+          }
+        },
+        {
+          "name": "My General Inquiries",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/user/myGeneralInquiries",
+              "host": ["{{base_url}}"],
+              "path": ["user", "myGeneralInquiries"]
+            }
+          }
+        },
+        {
+          "name": "Add Feedback",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/user/addFeedback",
+              "host": ["{{base_url}}"],
+              "path": ["user", "addFeedback"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"feedback_message\": \"Excellent platform! Found a skilled electrician within minutes. Very easy to use.\",\n  \"rating\": 5\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

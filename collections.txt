@@ -1,0 +1,23 @@
+====================================================
+  LOCAL LABOUR PLATFORM — MongoDB Collection Names
+====================================================
+
+Database Name : labour_platform
+
+Collections:
+1. users
+2. labour_categories
+3. labours
+4. labour_inquiries
+5. general_inquiries
+6. feedbacks
+
+====================================================
+  HOW TO RUN SEED DATA
+====================================================
+
+Step 1: Make sure .env has correct MONGO_URI
+Step 2: Run the following command:
+        node seed.js
+
+====================================================
