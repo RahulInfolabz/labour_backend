@@ -94,6 +94,14 @@ app.get("/user/myGeneralInquiries", MyGeneralInquiries);
 // Feedback
 app.post("/user/addFeedback", AddFeedback);
 
+
+app.get("/", (req, res) => {
+  return res.status(200).json({
+    status: true,
+    message: "Labout Backend Started."
+  })
+})
+
 // ─────────────────────────────────────────────────────────────────────────────
 app.listen(PORT, () =>
   console.log(`✅ Labour Search Platform server started on PORT ${PORT}!`)
