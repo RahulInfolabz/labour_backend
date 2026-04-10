@@ -24,6 +24,7 @@ const { MyLabourInquiries } = require("./apis/user/MyLabourInquiries");
 const { AddGeneralInquiry } = require("./apis/user/AddGeneralInquiry");
 const { MyGeneralInquiries } = require("./apis/user/MyGeneralInquiries");
 const { AddFeedback } = require("./apis/user/AddFeedback");
+const MongoStore = require("connect-mongo").default;
 
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -32,6 +33,25 @@ const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+
+app.set("trust proxy", 1);
+
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI
+    }),
+    cookie: {
+      secure: true,
+      httpOnly: true,
+      sameSite: "none"
+    }
+  })
+);
 
 app.use(
   session({
